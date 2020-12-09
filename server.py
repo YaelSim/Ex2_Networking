@@ -33,6 +33,10 @@ def client_acception_and_handling(server_socket):
                     client_socket.close()
                     break
 
+                if request_data == "\r\n\r\n":
+                    client_socket.close()
+                    break
+
                 # If the client's request is bigger than BUFFER_SIZE, continue reading (until we've got \r\n\r\n)
                 while request_data[eol_index:] != eol_str:
                     request_data = request_data + client_socket.recv(BUFFER_SIZE)
