@@ -88,8 +88,9 @@ def send_message_according_to_request(data, client_socket):
             if redirection_flag:  # redirect ...
                 connection_state = "close"
                 reply_msg = "HTTP/1.1 301 Moved Permanently\r\nConnection: " + \
-                            connection_state + "\r\nLocation: /result.html" + "\r\n\r\n" + content.decode()
+                            connection_state + "\r\nLocation: /result.html" + "\r\n\r\n"
                 client_socket.send(reply_msg.encode())
+                print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
             elif file_exist_flag:  # The file exists.
                 reply_msg = "HTTP/1.1 200 OK\r\nConnection: " + connection_state +\
